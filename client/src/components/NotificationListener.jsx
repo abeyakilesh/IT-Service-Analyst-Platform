@@ -3,7 +3,7 @@ import { io } from 'socket.io-client';
 import toast from 'react-hot-toast';
 import useAuthStore from '../store/authStore';
 
-const SOCKET_URL = 'http://localhost:5000';
+const SOCKET_URL = import.meta.env.VITE_SOCKET_URL || 'http://localhost:5001';
 
 const NotificationListener = () => {
     const { user, isAuthenticated } = useAuthStore();
