@@ -14,11 +14,11 @@ router.use(protect);
 router
     .route('/')
     .get(getCategories)
-    .post(authorize('admin'), createCategoryValidator, validate, createCategory);
+    .post(authorize('admin'), validate(createCategoryValidator), createCategory);
 
 router
     .route('/:id')
-    .put(authorize('admin'), createCategoryValidator, validate, updateCategory)
+    .put(authorize('admin'), validate(createCategoryValidator), updateCategory)
     .delete(authorize('admin'), deleteCategory);
 
 module.exports = router;

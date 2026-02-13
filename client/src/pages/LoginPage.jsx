@@ -12,12 +12,19 @@ const schema = z.object({
     password: z.string().min(1, 'Password is required'),
 });
 
+const DEMO_ACCOUNTS = [
+    { label: 'Admin', email: 'admin@acme.com', password: 'admin1234', color: 'from-purple-600 to-purple-700' },
+    { label: 'Analyst', email: 'analyst@acme.com', password: 'analyst1234', color: 'from-emerald-600 to-emerald-700' },
+    { label: 'User', email: 'user@acme.com', password: 'user1234', color: 'from-amber-600 to-amber-700' },
+];
+
 const LoginPage = () => {
     const [loading, setLoading] = useState(false);
+    const [demoLoading, setDemoLoading] = useState(null);
     const { login } = useAuthStore();
     const navigate = useNavigate();
 
-    const { register, handleSubmit, formState: { errors } } = useForm({
+    const { register, handleSubmit, setValue, formState: { errors } } = useForm({
         resolver: zodResolver(schema),
     });
 
@@ -32,6 +39,20 @@ const LoginPage = () => {
             toast.error(err.response?.data?.error?.message || 'Login failed');
         } finally {
             setLoading(false);
+        }
+    };
+
+    const handleDemoLogin = async (account) => {
+        setDemoLoading(account.label);
+        try {
+            const res = await loginUser({ email: account.email, password: account.password });
+            login(res.data.data.user, res.data.data.token);
+            toast.success(`Logged in as ${account.label}!`);
+            navigate('/dashboard');
+        } catch (err) {
+            toast.error(err.response?.data?.error?.message || 'Demo login failed — run the database seeder first.');
+        } finally {
+            setDemoLoading(null);
         }
     };
 
@@ -84,6 +105,24 @@ const LoginPage = () => {
                         {loading ? 'Signing in...' : 'Sign In'}
                     </button>
                 </form>
+
+                {/* Demo Login Section */}
+                <div className="mt-6 pt-5 border-t border-slate-700/60">
+                    <p className="text-xs text-slate-500 text-center mb-3 uppercase tracking-wider font-medium">Quick Demo Login</p>
+                    <div className="grid grid-cols-3 gap-2">
+                        {DEMO_ACCOUNTS.map((account) => (
+                            <button
+                                key={account.label}
+                                type="button"
+                                disabled={!!demoLoading}
+                                onClick={() => handleDemoLogin(account)}
+                                className={`bg-gradient-to-r ${account.color} hover:opacity-90 text-white py-2 rounded-lg text-xs font-medium transition-all disabled:opacity-50 disabled:cursor-not-allowed`}
+                            >
+                                {demoLoading === account.label ? '...' : account.label}
+                            </button>
+                        ))}
+                    </div>
+                </div>
 
                 <p className="text-sm text-slate-400 text-center mt-6">
                     Don't have an account?{' '}

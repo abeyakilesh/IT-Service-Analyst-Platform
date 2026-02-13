@@ -52,11 +52,10 @@ const ticketSchema = new mongoose.Schema(
 );
 
 // Auto-set resolvedAt when status changes to resolved
-ticketSchema.pre('save', function (next) {
+ticketSchema.pre('save', function () {
     if (this.isModified('status') && this.status === 'resolved' && !this.resolvedAt) {
         this.resolvedAt = new Date();
     }
-    next();
 });
 
 module.exports = mongoose.model('Ticket', ticketSchema);

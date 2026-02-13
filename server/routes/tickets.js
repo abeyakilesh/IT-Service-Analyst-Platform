@@ -12,15 +12,11 @@ const { protect, authorize } = require('../middleware/auth');
 
 router.use(protect); // All ticket routes require auth
 
-router
-    .route('/')
-    .get(getTickets)
-    .post(createTicketValidator, validate, createTicket);
+router.get('/', getTickets);
+router.post('/', validate(createTicketValidator), createTicket);
 
-router
-    .route('/:id')
-    .get(getTicket)
-    .put(updateTicketValidator, validate, updateTicket)
-    .delete(authorize('admin'), deleteTicket);
+router.get('/:id', getTicket);
+router.put('/:id', validate(updateTicketValidator), updateTicket);
+router.delete('/:id', authorize('admin'), deleteTicket);
 
 module.exports = router;

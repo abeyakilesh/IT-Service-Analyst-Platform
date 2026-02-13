@@ -17,12 +17,12 @@ router.get('/', getOrganizations);
 router.use(protect);
 router.use(authorize('admin'));
 
-router.post('/', createOrganizationValidator, validate, createOrganization);
+router.post('/', validate(createOrganizationValidator), createOrganization);
 
 router
     .route('/:id')
     .get(getOrganization)
-    .put(createOrganizationValidator, validate, updateOrganization)
+    .put(validate(createOrganizationValidator), updateOrganization)
     .delete(deleteOrganization);
 
 module.exports = router;
