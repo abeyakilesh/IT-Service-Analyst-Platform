@@ -22,9 +22,15 @@ api.interceptors.response.use(
     (response) => response,
     (error) => {
         if (error.response?.status === 401) {
-            localStorage.removeItem('token');
-            localStorage.removeItem('user');
-            window.location.href = '/login';
+            // Don't redirect for auth endpoints (login/register) — let the error toast show
+            const url = error.config?.url || '';
+            const isAuthEndpoint = url.includes('/auth/login') || url.includes('/auth/register');
+
+            if (!isAuthEndpoint) {
+                localStorage.removeItem('token');
+                localStorage.removeItem('user');
+                window.location.href = '/login';
+            }
         }
         return Promise.reject(error);
     }
