@@ -13,9 +13,9 @@ const schema = z.object({
 });
 
 const DEMO_ACCOUNTS = [
-    { label: 'Admin', email: 'admin@acme.com', password: 'admin1234', color: 'from-purple-600 to-purple-700' },
-    { label: 'Analyst', email: 'analyst@acme.com', password: 'analyst1234', color: 'from-emerald-600 to-emerald-700' },
-    { label: 'User', email: 'user@acme.com', password: 'user1234', color: 'from-amber-600 to-amber-700' },
+    { label: 'Admin', email: 'admin@acme.com', password: 'admin1234' },
+    { label: 'Analyst', email: 'analyst@acme.com', password: 'analyst1234' },
+    { label: 'User', email: 'user@acme.com', password: 'user1234' },
 ];
 
 const LoginPage = () => {
@@ -109,16 +109,22 @@ const LoginPage = () => {
                 {/* Demo Login Section */}
                 <div className="mt-6 pt-5 border-t border-slate-700/60">
                     <p className="text-xs text-slate-500 text-center mb-3 uppercase tracking-wider font-medium">Quick Demo Login</p>
-                    <div className="grid grid-cols-3 gap-2">
+                    <div className="grid grid-cols-3 gap-3">
                         {DEMO_ACCOUNTS.map((account) => (
                             <button
                                 key={account.label}
                                 type="button"
                                 disabled={!!demoLoading}
                                 onClick={() => handleDemoLogin(account)}
-                                className={`bg-gradient-to-r ${account.color} hover:opacity-90 text-white py-2 rounded-lg text-xs font-medium transition-all disabled:opacity-50 disabled:cursor-not-allowed`}
+                                className={`
+                                    relative group overflow-hidden bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white py-2.5 rounded-lg text-xs font-semibold transition-all duration-300
+                                    shadow-[0_4px_6px_-1px_rgba(0,0,0,0.3)] hover:shadow-[0_0_15px_rgba(37,99,235,0.5)] border border-slate-700 hover:border-blue-500/50 hover:-translate-y-0.5
+                                    disabled:opacity-50 disabled:cursor-not-allowed
+                                `}
                             >
-                                {demoLoading === account.label ? '...' : account.label}
+                                <span className="relative z-10">{demoLoading === account.label ? '...' : account.label}</span>
+                                {/* Glow Effect */}
+                                <div className="absolute inset-0 bg-gradient-to-r from-blue-600/0 via-blue-500/10 to-blue-600/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                             </button>
                         ))}
                     </div>

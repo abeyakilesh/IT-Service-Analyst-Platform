@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from 'react-hot-toast';
@@ -5,6 +6,7 @@ import { Toaster } from 'react-hot-toast';
 import AuthLayout from './layouts/AuthLayout';
 import MainLayout from './layouts/MainLayout';
 import ProtectedRoute from './components/ProtectedRoute';
+import useThemeStore from './store/themeStore';
 
 import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
@@ -22,6 +24,12 @@ const queryClient = new QueryClient({
 });
 
 function App() {
+  const { initTheme } = useThemeStore();
+
+  useEffect(() => {
+    initTheme();
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>

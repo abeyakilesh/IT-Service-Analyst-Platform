@@ -1,21 +1,37 @@
 @import "tailwindcss";
 
+/* ---- Enable class-based dark mode (Tailwind v4) ---- */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* ---- Custom Design Tokens ---- */
 @theme {
-  --color-primary: #1A73E8;
-  --color-primary-hover: #1557B0;
+  --color-primary: #2563EB;
+  --color-primary-hover: #1D4ED8;
   --color-bg-dark: #0B1120;
-  --color-bg-surface: #111827;
-  --color-bg-card: #1E293B;
-  --color-bg-card-hover: #263348;
-  --color-text-primary: #F1F5F9;
-  --color-text-secondary: #94A3B8;
-  --color-text-muted: #64748B;
-  --color-border: #1E293B;
-  --color-success: #22C55E;
-  --color-warning: #EAB308;
-  --color-error: #EF4444;
-  --color-info: #3B82F6;
+  --color-bg-surface: #F8FAFC;
+  --color-bg-card: #FFFFFF;
+  --color-bg-card-hover: #F1F5F9;
+  --color-text-primary: #0F172A;
+  --color-text-secondary: #64748B;
+  --color-text-muted: #94A3B8;
+  --color-border: #E2E8F0;
+  --color-success: #16A34A;
+  --color-warning: #CA8A04;
+  --color-error: #DC2626;
+  --color-info: #2563EB;
+}
+
+@layer base {
+  :root.dark {
+    --color-bg-dark: #0B1120;
+    --color-bg-surface: #1E293B;
+    --color-bg-card: #1E293B;
+    --color-bg-card-hover: #334155;
+    --color-text-primary: #F8FAFC;
+    --color-text-secondary: #CBD5E1;
+    --color-text-muted: #94A3B8;
+    --color-border: #334155;
+  }
 }
 
 /* ---- Global Styles (base layer so utilities still win) ---- */
@@ -29,7 +45,7 @@
 
   body {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    background-color: var(--color-bg-dark);
+    background-color: #F1F5F9;
     color: var(--color-text-primary);
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
@@ -41,11 +57,11 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: var(--color-bg-dark);
+    background: #F1F5F9;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: var(--color-text-muted);
+    background: #CBD5E1;
     border-radius: 3px;
   }
 }

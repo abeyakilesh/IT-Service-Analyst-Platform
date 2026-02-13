@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar';
 
 const MainLayout = () => {
     return (
-        <div className="min-h-screen bg-[#0B1120]">
+        <div className="min-h-screen bg-slate-100 dark:bg-slate-900 transition-colors duration-300">
             <Sidebar />
             <div className="ml-64">
                 <Navbar />
