@@ -22,7 +22,7 @@ A log of every issue encountered during the development of the **IT Service Anal
 ### Files Changed
 - `client/src/pages/LandingPage.jsx`
 
----
+-----------------------------------------------------------------------------------------------------------------------------
 
 ## Problem #2 — Port 5000 Hijacked by macOS AirPlay Receiver (403 Forbidden)
 
@@ -61,7 +61,8 @@ Changed the server port from `5000` → `5001`:
 ### Lesson Learned
 > **Always avoid port 5000 on macOS.** Use 5001, 3001, 8080, or any port not reserved by system services. You can check port usage with `lsof -i :<port>`.
 
----
+
+-----------------------------------------------------------------------------------------------------------------------------
 
 ## Problem #3 — "next is not a function" Error on Ticket Creation (Mongoose 9 Breaking Change)
 
@@ -103,7 +104,8 @@ ticketSchema.pre('save', function () {
 ### Lesson Learned
 > **Mongoose 9 migration**: All `pre`/`post` hooks must drop `next`. Use `async` functions and `return`/`throw` instead. See: [Mongoose 9 Migration Guide](https://mongoosejs.com/docs/migrating_to_9.html)
 
----
+
+-----------------------------------------------------------------------------------------------------------------------------
 
 ## Problem #4 — Express 5 + express-validator Incompatibility (Login & Routes Hanging)
 
@@ -157,7 +159,8 @@ router.post('/', validate(createTicketValidator), createTicket);
 ### Lesson Learned
 > **Express 5 + express-validator**: Never pass validation chains directly as route middleware. Always use `validator.run(req)` inside a wrapper function. This is the recommended pattern for Express 5.
 
----
+
+-----------------------------------------------------------------------------------------------------------------------------
 
 ## Problem #5 — No Demo Login Credentials Visible to Users
 
@@ -185,6 +188,56 @@ Each button directly calls the login API — no form filling needed.
 
 ---
 
+## Problem #6 — Chat Interface Misalignment & Performance Issues
+
+| Detail | Info |
+|--------|------|
+| **When** | Using the ticket chat feature |
+| **Symptom** | Messages from all users appeared on the same side (left). Sending a message had a noticeable delay before appearing. Opening the chat panel triggered a loading spinner every time. |
+
+### Why It Happened
+1. **Alignment**: The logic to determine if a message belonged to the current user (`isMine`) was comparing mismatched types (ObjectId object vs String), causing the check to fail.
+2. **Performance**: The chat component fetched data on every mount without caching.
+3. **UX**: There was no optimistic UI, so the interface waited for the server response before showing the new message.
+
+### How We Fixed It
+1. **Alignment**: Implemented a robust ID comparison: `String(msg.senderId._id) === String(user._id)`.
+2. **Performance**: Switched from `useEffect` data fetching to **React Query** (`useQuery`). This provides caching, background updates, and instant loading for previously visited chats.
+3. **UX**: Implemented **Optimistic Updates** using `useMutation`'s `onMutate` handler. New messages now appear instantly in the chat list while the server request processes in the background.
+
+### Files Changed
+- `client/src/components/NotificationPanel.jsx`
+
+---
+
+## Problem #7 — Chat Alignment Broken After DB Reseed (ID Mismatch)
+
+| Detail | Info |
+|--------|------|
+| **When** | After running the database seeder while still logged in on the client |
+| **Symptom** | User's own messages appeared on the left (as if from someone else), even though the name was correct. |
+
+### Why It Happened
+1.  **Stale LocalStorage**: The client stored the user object (with an old `_id`) in `localStorage`.
+2.  **DB Reseed**: The seeder deletes all users and recreates them, generating **new `_id`s**.
+3.  **Comparision Fail**: The `isMine` logic checked `msg.senderId === user._id`. Since the DB had new IDs, it didn't match the stale ID in the browser.
+
+### How We Fixed It
+Updated the `isMine` check to accept **either** a matching ID **OR** a matching Email:
+
+```javascript
+const idsMatch = String(msgSenderId) === String(currentUserId);
+const emailsMatch = getUserEmail(msg.senderId) === getUserEmail(user);
+const isMine = idsMatch || emailsMatch;
+```
+
+This ensures that even if IDs are out of sync due to dev environments/seeding, the user is still correctly identified by their unique email.
+
+### Files Changed
+- `client/src/components/NotificationPanel.jsx`
+
+---
+
 ## Summary Table
 
 | # | Problem | Root Cause | Severity |
@@ -194,3 +247,5 @@ Each button directly calls the login API — no form filling needed.
 | 3 | "next is not a function" | Mongoose 9 removed `next` from hooks | Critical |
 | 4 | Validators breaking routes | Express 5 mishandles thenable middleware | Critical |
 | 5 | No demo login visible | Missing UX for test credentials | Low |
+| 6 | Chat alignment & lag | Type mismatch & lack of caching | Medium |
+| 7 | Chat alignment (part 2) | Stale IDs after DB reseed | Low (Dev only) |

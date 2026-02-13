@@ -47,6 +47,15 @@ const ticketSchema = new mongoose.Schema(
             type: Date,
             default: null,
         },
+        lastMessageAt: {
+            type: Date,
+            default: null,
+            index: true,
+        },
+        lastMessage: {
+            type: String,
+            default: null,
+        },
     },
     { timestamps: true }
 );

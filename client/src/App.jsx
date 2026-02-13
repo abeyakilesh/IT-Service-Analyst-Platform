@@ -6,7 +6,6 @@ import { Toaster } from 'react-hot-toast';
 import AuthLayout from './layouts/AuthLayout';
 import MainLayout from './layouts/MainLayout';
 import ProtectedRoute from './components/ProtectedRoute';
-import NotificationListener from './components/NotificationListener';
 import useThemeStore from './store/themeStore';
 
 import LandingPage from './pages/LandingPage';
@@ -59,7 +58,6 @@ function App() {
         </Routes>
       </BrowserRouter>
       <Toaster position="top-right" toastOptions={{ style: { background: '#1E293B', color: '#F1F5F9', border: '1px solid #334155' } }} />
-      <NotificationListener />
     </QueryClientProvider>
   );
 }

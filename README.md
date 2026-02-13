@@ -268,6 +268,13 @@ chore:     Build/config changes
 - CSV export
 - Activity audit logs
 
+### 🔮 Future Upgrades
+- **AI-Powered Insights**: Auto-suggest solutions to analysts based on ticket content.
+- **Mobile App**: React Native version for field technicians.
+- **Email Integration**: Create tickets directly from incoming emails.
+- **Dark Mode V2**: Enhanced theming options for user preference.
+- **Slack/Teams Bot**: Notifications and quick actions directly in chat apps.
+
 ---
 
 ## License

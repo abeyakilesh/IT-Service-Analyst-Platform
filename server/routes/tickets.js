@@ -5,6 +5,7 @@ const {
     createTicket,
     updateTicket,
     deleteTicket,
+    getMyChats,
 } = require('../controllers/ticketController');
 const { createTicketValidator, updateTicketValidator } = require('../validators/ticket');
 const validate = require('../middleware/validate');
@@ -13,6 +14,7 @@ const { protect, authorize } = require('../middleware/auth');
 router.use(protect); // All ticket routes require auth
 
 router.get('/', getTickets);
+router.get('/my-chats', getMyChats);
 router.post('/', validate(createTicketValidator), createTicket);
 
 router.get('/:id', getTicket);
