@@ -1,4 +1,4 @@
-# 🛠️ IT Service Analytics Platform
+# IT Service Analytics Platform
 
 A professional IT Service Analytics and Ticketing platform built on the **MERN stack**. Designed to help organizations manage, track, and analyze IT service tickets with SLA enforcement, role-based dashboards, and real-time analytics.
 
@@ -81,7 +81,7 @@ MongoDB Atlas (Cloud DB)
 6. Response returned to frontend
 7. React updates UI via TanStack Query cache
 
-> 📄 See [docs/architecture.md](docs/architecture.md) for detailed diagrams.
+>  See [docs/architecture.md](docs/architecture.md) for detailed diagrams.
 
 ---
 
@@ -109,7 +109,7 @@ Ticket ──follows──▶ SLA
 AnalyticsReport ──aggregates──▶ Ticket
 ```
 
-> 📄 See [docs/er-diagram.md](docs/er-diagram.md) for the full ER diagram.
+>  See [docs/er-diagram.md](docs/er-diagram.md) for the full ER diagram.
 
 ---
 
@@ -165,13 +165,13 @@ IT-Service-Analyst-Dashboard/
 | `GET`    | `/api/organizations`        | List organizations        | Admin    |
 | `POST`   | `/api/organizations`        | Create organization       | Admin    |
 
-> 📄 See [docs/api-design.md](docs/api-design.md) for the complete API specification.
+>  See [docs/api-design.md](docs/api-design.md) for the complete API specification.
 
 ---
 
 ## Setup & Installation
 
-> ⚠️ **Prerequisites:** Node.js 18+, npm 9+, MongoDB Atlas account
+>  **Prerequisites:** Node.js 18+, npm 9+, MongoDB Atlas account
 
 ```bash
 # Clone the repo
@@ -248,7 +248,7 @@ chore:     Build/config changes
 
 ## Roadmap
 
-### Phase 1 ✅ — Planning & Review
+### Phase 1  — Planning & Review
 - Architecture & ER diagrams
 - API design specification
 - Wireframes
@@ -268,7 +268,7 @@ chore:     Build/config changes
 - CSV export
 - Activity audit logs
 
-### 🔮 Future Upgrades
+###  Future Upgrades
 - **AI-Powered Insights**: Auto-suggest solutions to analysts based on ticket content.
 - **Mobile App**: React Native version for field technicians.
 - **Email Integration**: Create tickets directly from incoming emails.
