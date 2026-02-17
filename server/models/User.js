@@ -29,6 +29,11 @@ const userSchema = new mongoose.Schema(
             enum: ['admin', 'analyst', 'user'],
             default: 'user',
         },
+        team: {
+            type: String,
+            enum: ['Hardware', 'Software', 'Network', 'Database', 'General', null],
+            default: null, // Only for analysts
+        },
         organizationId: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Organization',
@@ -41,7 +46,7 @@ const userSchema = new mongoose.Schema(
 // Hash password before save
 userSchema.pre('save', async function () {
     if (!this.isModified('password')) return;
-    const salt = await bcrypt.genSalt(12);
+    const salt = await bcrypt.genSalt(10);
     this.password = await bcrypt.hash(this.password, salt);
 });
 
