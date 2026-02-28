@@ -5,16 +5,15 @@ A professional IT Service Analytics and Ticketing platform built on the **MERN s
 ---
 
 ## Images
-<img width="450" height="450" alt="image" src="https://github.com/user-attachments/assets/c451871b-c717-4500-9a09-ebb508ed0478" />
-<img width="450" height="450" alt="image" src="https://github.com/user-attachments/assets/3181011d-5bfd-4d8d-95a0-16f448173590" />
-<img width="450" height="450" alt="image" src="https://github.com/user-attachments/assets/55937c64-079a-420f-8b73-2af886a2c3cf" />
-<img width="450" height="450" alt="image" src="https://github.com/user-attachments/assets/c3dadeba-43af-4ca6-b227-ab6b22922f3f" />
-<img width="450" height="450" alt="image" src="https://github.com/user-attachments/assets/cc74870e-53d6-42ee-88ed-8c709613af85" />
-<img width="450" height="450" alt="image" src="https://github.com/user-attachments/assets/0dc04863-1136-4b7d-80f3-916e78d3f084" />
-<img width="450" height="450" alt="image" src="https://github.com/user-attachments/assets/8adeaf99-d786-4025-b9d0-57c8479979a0" />
-<img width="450" height="450" alt="image" src="https://github.com/user-attachments/assets/8cc1a815-4de2-46da-951f-3e83e143f3fa" />
-<img width="450" height="450" alt="image" src="https://github.com/user-attachments/assets/6ee25814-c409-4f14-b0e7-1f472d6bb861" />
-<img width="450" height="450" alt="image" src="https://github.com/user-attachments/assets/3c82e09c-903b-4a48-badd-309869bd1576" />
+<img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/c451871b-c717-4500-9a09-ebb508ed0478" />
+<img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/3181011d-5bfd-4d8d-95a0-16f448173590" />
+<img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/55937c64-079a-420f-8b73-2af886a2c3cf" />
+<img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/c3dadeba-43af-4ca6-b227-ab6b22922f3f" />
+<img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/cc74870e-53d6-42ee-88ed-8c709613af85" />
+<img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/0dc04863-1136-4b7d-80f3-916e78d3f084" />
+<img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/8adeaf99-d786-4025-b9d0-57c8479979a0" />
+<img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/6ee25814-c409-4f14-b0e7-1f472d6bb861" />
+<img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/3c82e09c-903b-4a48-badd-309869bd1576" />
 
 
 ## 📋 Table of Contents
