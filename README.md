@@ -13,7 +13,7 @@ A professional IT Service Analytics and Ticketing platform built on the **MERN s
 <img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/0dc04863-1136-4b7d-80f3-916e78d3f084" />
 <img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/8adeaf99-d786-4025-b9d0-57c8479979a0" />
 <img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/6ee25814-c409-4f14-b0e7-1f472d6bb861" />
-<img width="3900" height="400" alt="image" src="https://github.com/user-attachments/assets/3c82e09c-903b-4a48-badd-309869bd1576" />
+<img width="3500" height="400" alt="image" src="https://github.com/user-attachments/assets/3c82e09c-903b-4a48-badd-309869bd1576" />
 
 
 ## 📋 Table of Contents
