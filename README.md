@@ -1,6 +1,6 @@
 # IT Service Analytics Platform
 
-A professional IT Service Analytics and Ticketing platform built on the **MERN stack**. Designed to help organizations manage, track, and analyze IT service tickets with SLA enforcement, role-based dashboards, and real-time analytics.
+A professional IT Service Analytics and Ticketing platform built on the **MERN stack**. Designed to help organizations manage, track, and analyze IT service tickets with SLA enforcement, role-based dashboards, and real-time analytics. 
 
 ---
 
