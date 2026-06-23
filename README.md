@@ -2,7 +2,7 @@
 
 A professional IT Service Analytics and Ticketing platform built on the **MERN stack**. Designed to help organizations manage, track, and analyze IT service tickets with SLA enforcement, role-based dashboards, and real-time analytics. 
  
-Link : https://it-service-analyst-platform.vercel.app/
+Link : https://it-service-analyst-platform.vercel.app/ 
 ---
  
 ## Images
